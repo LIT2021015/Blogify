@@ -24,35 +24,14 @@ export const authOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 
-      profile(profile){
 
-        return({
-          id:profile.sub,
-           email:profile.email
-
-        })
-      }
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
 
-      console.log(user)
-        return {
-          ...token,
-          ...user
-        };
-      
-
-    
-    },
-    async session({ session, token }) {
-      return session;
-    },},
 
 
 };

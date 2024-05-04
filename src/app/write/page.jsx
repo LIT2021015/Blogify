@@ -74,7 +74,7 @@ const WritePage = () => {
     };
 
     file && upload();
-  }, [file,open]);
+  }, [file]);
 
   const slugify = (str) =>
     str
