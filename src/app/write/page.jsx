@@ -75,7 +75,7 @@ const WritePage = () => {
 
     file && upload();
   }, [file]);
-
+//no new
   const slugify = (str) =>
     str
   .toLowerCase()
