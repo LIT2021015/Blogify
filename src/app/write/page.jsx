@@ -1,8 +1,8 @@
 "use client";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import Image from "next/image";
 import styles from "./writePage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -13,8 +13,11 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-import ReactQuill from "react-quill";
+// import ReactQuillComponent from "./ReactQuillComponent";
+// import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
 
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
@@ -40,19 +43,15 @@ const WritePage = () => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
-          
-          toast(
-            "Upload is " + progress + "% done",
-            {
-              duration: 4000,
-            }
-          );
-        
-          if(progress===100){
 
-          toast.success('Upload Complete');
-          setOpen(!open)
-         }
+          toast("Upload is " + progress + "% done", {
+            duration: 4000,
+          });
+
+          if (progress === 100) {
+            toast.success("Upload Complete");
+            setOpen(!open);
+          }
 
           switch (snapshot.state) {
             case "paused":
@@ -64,7 +63,7 @@ const WritePage = () => {
           }
         },
         (error) => {
-          toast.error("Couldnt save")
+          toast.error("Couldnt save");
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -75,26 +74,15 @@ const WritePage = () => {
     };
 
     file && upload();
-  }, [file]);
-
-
-
-
-  if (status === "loading") {
-    return <div className={styles.loading}>Loading...</div>;
-  }
-
-  if (status === "unauthenticated") {
-    router.push("/");
-  }
+  }, [file,open]);
 
   const slugify = (str) =>
     str
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/[\s_-]+/g, "-")
-      .replace(/^-+|-+$/g, "");
+  .toLowerCase()
+  .trim()
+  .replace(/[^\w\s-]/g, "")
+  .replace(/[\s_-]+/g, "-")
+  .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
     const res = await fetch("/api/posts", {
@@ -104,7 +92,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "style", 
+        catSlug: catSlug || "style",
       }),
     });
 
@@ -114,6 +102,13 @@ const WritePage = () => {
     }
   };
 
+  if (status === "loading") {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
+  if (status === "unauthenticated") {
+    router.push("/");
+  }
   return (
     <div className={styles.container}>
       <input
@@ -122,7 +117,10 @@ const WritePage = () => {
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
+      <select
+        className={styles.select}
+        onChange={(e) => setCatSlug(e.target.value)}
+      >
         <option value="style">style</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>

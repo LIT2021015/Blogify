@@ -16,7 +16,7 @@ const Navbar = () => {
       </div>
       <div className={styles.logo}>Blogify</div>
       <div className={styles.links}>
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
         <Link href="/" className={styles.link}>Homepage</Link>
         <Link href="/" className={styles.link}>Contact</Link>
         <Link href="/" className={styles.link}>About</Link>

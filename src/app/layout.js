@@ -18,8 +18,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <ThemeContextProvider>
-            <ThemeProvider>
+          {/* <ThemeContextProvider> */}
+            {/* <ThemeProvider> */}
               <div className="container">
                 <div className="wrapper">
                   <Navbar />
@@ -28,8 +28,8 @@ export default function RootLayout({ children }) {
                   <Footer />
                 </div>
               </div>
-            </ThemeProvider>
-          </ThemeContextProvider>
+            {/* </ThemeProvider> */}
+          {/* </ThemeContextProvider> */}
         </AuthProvider>
       </body>
     </html>

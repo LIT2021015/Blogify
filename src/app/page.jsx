@@ -10,10 +10,10 @@ export default function Home({ searchParams }) {
 
   return (
     <div className={styles.container}>
-      <Featured page={page}/>
+      <Featured page={page} />
       <CategoryList />
       <div className={styles.content}>
-        <CardList page={page}/>
+        <CardList page={page} />
         <Menu />
       </div>
     </div>
