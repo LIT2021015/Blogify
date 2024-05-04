@@ -41,7 +41,7 @@ const Featured = async ({ page, cat }) => {
             }}
           />
 
-          <Link href={`https://blogify-nine-phi.vercel.app/api/posts/${posts[0]?.slug}`} className={styles.link}>
+          <Link href={`/posts/${posts[0]?.slug}`} className={styles.link}>
             Read More
           </Link>
         </div>
