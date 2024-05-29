@@ -37,7 +37,7 @@ const Featured = async ({ page, cat }) => {
           <div
             className={styles.postDesc}
             dangerouslySetInnerHTML={{
-              __html: posts[0]?.desc.substring(0, 60),
+              __html: posts[0]?.desc.substring(0, 300),
             }}
           />
 

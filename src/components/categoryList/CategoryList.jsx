@@ -12,10 +12,15 @@ const getData = async () => {
   );
 
   if (!res.ok) {
-    throw new Error("Failed");
-  }
+    
 
-  return res.json();
+   
+  }
+   
+  const data=await res.json();
+
+  console.log(data)
+  return data;
 };
 
 const CategoryList = async () => {
