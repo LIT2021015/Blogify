@@ -5,8 +5,8 @@ export const GET = async (req) => {
   try {
    
     const {searchParams}=new URL(req.url)
-       const key=searchParams.get("key")
-       console.log(key);
+       const q=searchParams.get("q")
+       console.log(q);
 
         const posts= await prisma.post.findMany(
           {  where:{
@@ -16,14 +16,14 @@ export const GET = async (req) => {
                     {
                         desc:{
 
-                            contains:key,
+                            contains:q,
                              mode:'insensitive'
                         }
                     },
                     {
                          title:{
 
-                            contains:key,
+                            contains:q,
                              mode:'insensitive'
                         }
                     }

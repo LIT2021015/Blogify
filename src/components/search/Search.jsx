@@ -13,7 +13,7 @@ const Search = () => {
   const handleSubmit = () => {
     console.log(inputValue);
 
-    router.push(`/search?key=${inputValue}`);
+    router.push(`/search?q=${inputValue}`);
   };
 
   return (

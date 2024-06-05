@@ -23,9 +23,9 @@ const Page =() => {
 
   const query=useSearchParams();
 
-  const key=query?query.get("key"):null;
+  const q=query?query.get("q"):null;
 
-  const {data,isLoading}=useSWR(`https://blogify-nine-phi.vercel.app/api/search?key=${key}`,getData)
+  const {data,isLoading}=useSWR(`https://blogify-nine-phi.vercel.app/api/search?q=${q}`,getData)
    
  if(data?.length)
   {
