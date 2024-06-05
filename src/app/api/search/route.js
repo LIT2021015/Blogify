@@ -4,9 +4,10 @@ import { NextResponse } from "next/server";
 export const GET = async (req) => {
   try {
    
-    const {searchParams}=new URL(req.url)
-       const q=searchParams.get("q")
-       console.log(q);
+    // const {searchParams}=new URL(req.url)
+    //    const q=searchParams.get("q")
+    //    console.log(q);
+      const q=""
 
         const posts= await prisma.post.findMany(
           {  where:{
