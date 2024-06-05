@@ -8,24 +8,37 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 const fetcher = async (url) => {
-  const res = await fetch(url);
+  // const res = await fetch(url,{cache: "no-store",});
 
-  const data = await res.json();
+  // const data = await res.json();
+
+  // if (!res.ok) {
+  //   const error = new Error(data.message);
+  //   throw error;
+  // }
+
+  // return data;
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
-    const error = new Error(data.message);
-    throw error;
+    throw new Error("Failed");
   }
 
-  return data;
+  return res.json();
+
+
+
 };
 
 const Comments = ({ postSlug }) => {
   const { status } = useSession();
 
   const { data, mutate, isLoading } = useSWR(
+    
     `https://blogify-nine-phi.vercel.app/api/comments?postSlug=${postSlug}`,
-    fetcher
+    fetcher,
   );
 
   const [desc, setDesc] = useState("");

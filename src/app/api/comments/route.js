@@ -15,17 +15,16 @@ export const GET = async (req) => {
       },
       include: { user: true },
     });
-
+      //  console.log(comments);
     return new NextResponse(JSON.stringify(comments, { status: 200 }));
   } catch (err) {
-    // console.log(err);
+     console.log(err);
     return new NextResponse(
       JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
   }
 };
 
-// CREATE A COMMENT
 export const POST = async (req) => {
   const session = await getAuthSession();
 

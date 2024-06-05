@@ -67,6 +67,21 @@
   font-weight: 300;
   margin-bottom: 20px;
 }
+.view {
+  margin-top: 100px;
+  display: flex;
+  gap: 24px;
+
+
+}
+.views {
+  display: flex;
+  align-items: centre;
+  gap:10px;
+  justify-content: center;
+
+
+}
 
 @media screen and (max-width: 1536px) {
   .title {
@@ -92,3 +107,4 @@
     font-size: 18px;
   }
 }
+
