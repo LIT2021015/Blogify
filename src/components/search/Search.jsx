@@ -13,7 +13,7 @@ const Search = () => {
   const handleSubmit = () => {
     console.log(inputValue);
 
-    router.push(`/search?q=${inputValue}`);
+    router.push(`https://blogify-nine-phi.vercel.app/search?q=${inputValue}`);
   };
 
   return (
