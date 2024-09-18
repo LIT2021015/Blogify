@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const getData = async () => {
   const res = await fetch(
-    "https://blogify-nine-phi.vercel.app/api/categories",
+    "http://localhost:3000/api/categories",
     {
       cache: "no-store",
     }
@@ -19,7 +19,7 @@ const getData = async () => {
    
   const data=await res.json();
 
-  console.log(data)
+  // console.log(data)
   return data;
 };
 
@@ -31,7 +31,7 @@ const CategoryList = async () => {
       <div className={styles.categories}>
         {data?.map((item) => (
           <Link
-            href="/blog?cat=style"
+            href={`/blog?cat=${item.title}`}
             className={`${styles.category} ${styles[item.slug]}`}
             key={item._id}
           >

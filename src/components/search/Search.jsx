@@ -17,17 +17,19 @@ const Search = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <input
-        className={styles.container1}
-        placeholder="Search on Blogify"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <button className={styles.container2} onClick={handleSubmit}>
-        SEARCH
-      </button>
-    </div>
+   
+      <div className={styles.container}>
+        <input
+          className={styles.container1}
+          placeholder="Search on Blogify"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button className={styles.container2} onClick={handleSubmit}>
+          SEARCH
+        </button>
+      </div>
+    
   );
 };
 

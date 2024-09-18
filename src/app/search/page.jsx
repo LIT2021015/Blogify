@@ -25,7 +25,7 @@ const Page =() => {
 
   const q=query?query.get("q"):null;
 
-  const {data,isLoading}=useSWR(`https://blogify-nine-phi.vercel.app/api/search?q=${q}`,getData)
+  const {data,isLoading}=useSWR(`/api/search?q=${q}`,getData)
    
  if(data?.length)
   {

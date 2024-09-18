@@ -44,6 +44,14 @@
   width: 100%;
   left: 50px;
 }
+.input1{
+  padding: 50px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--textColor);
+}
 
 .input{
   padding: 50px;

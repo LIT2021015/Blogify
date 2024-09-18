@@ -16,6 +16,11 @@ export const GET = async (req) => {
     where: {
       ...(cat && { catSlug: cat }),
     },
+    orderBy: {
+      createdAt: 'desc',
+      
+  },
+
   };
 
   
@@ -45,7 +50,28 @@ export const POST = async (req) => {
   }
 
   try {
+
+  
+
+
     const body = await req.json();
+
+
+    let category = await prisma.category.findUnique({
+      where: { slug: body.catSlug },
+    });
+  
+    // If category doesn't exist, create it
+    if (!category) {
+      category = await prisma.category.create({
+        data: {
+          slug: body.catSlug,
+          title: body.catSlug, // Assuming slug and title are the same; adjust as needed
+        },
+      });
+    }
+
+
     const post = await prisma.post.create({
       data: { ...body, userEmail: session.user.email },
     });

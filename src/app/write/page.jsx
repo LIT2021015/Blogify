@@ -28,6 +28,24 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+  const [showOtherInput, setShowOtherInput] = useState(false);
+  const [otherValue, setOtherValue] = useState('');
+
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+    if (value === 'Other') {
+      setShowOtherInput(true);
+      setCatSlug(''); // clear selected value
+    } else {
+      setShowOtherInput(false);
+      setCatSlug(value); // update selected value
+    }
+  };
+
+  const handleOtherInputChange = (e) => {
+    setOtherValue(e.target.value);
+    setCatSlug(e.target.value); // set category to the input's value
+  };
 
   useEffect(() => {
     const storage = getStorage(app);
@@ -119,7 +137,7 @@ const WritePage = () => {
       />
       <select
         className={styles.select}
-        onChange={(e) => setCatSlug(e.target.value)}
+        onChange={handleSelectChange}
       >
         <option value="style">style</option>
         <option value="fashion">fashion</option>
@@ -127,7 +145,20 @@ const WritePage = () => {
         <option value="culture">culture</option>
         <option value="travel">travel</option>
         <option value="coding">coding</option>
+        <option value="Other">Other</option>
       </select>
+      {showOtherInput && (
+        <input
+          type="text"
+          placeholder="Enter your category"
+          value={otherValue}
+          onChange={handleOtherInputChange}
+          className={styles.input1}
+        />
+      )}
+
+
+
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
