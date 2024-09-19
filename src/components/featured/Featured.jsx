@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./featured.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import Cou from "./Cou";
 const getData = async (page, cat) => {
   const res = await fetch(`https://blogify-nine-phi.vercel.app/api/postsview`, {
     cache: "no-store",
@@ -17,13 +18,15 @@ const getData = async (page, cat) => {
 const Featured = async ({ page, cat }) => {
   const { posts, count } = await getData(page, cat);
 
+  
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
         <b>Hey, welcome to Blogify!</b> Discover Your stories and creative
         ideas.
       </h1>
-      <div className={styles.post}>
+      {/* <div className={styles.post}>
         <div className={styles.imgContainer}>
           <Image
             src={posts[0]?.img ? posts[0]?.img : "/p1.jpeg"}
@@ -51,7 +54,9 @@ const Featured = async ({ page, cat }) => {
             Read More
           </Link>
         </div>
-      </div>
+      </div> */}
+
+      <Cou posts={posts} />
     </div>
   );
 };
