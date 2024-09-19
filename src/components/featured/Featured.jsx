@@ -37,7 +37,13 @@ const Featured = async ({ page, cat }) => {
           <div
             className={styles.postDesc}
             dangerouslySetInnerHTML={{
-              __html: posts[0]?.desc.substring(0, 300),
+              __html:
+                posts[0]?.desc
+                  .substring(0, Math.min(posts[0]?.desc.length, 300))
+                  .split(" ") // split the string into words
+                  .slice(0, -1) // remove the last element if it's incomplete
+                  .join(" ") + (posts[0]?.desc.length > 300
+                   ? "..." : ""),
             }}
           />
 

@@ -21,7 +21,10 @@ const Card = ({ key, item }) => {
           <h1>{item.title}</h1>
         </Link>
         {/* <p className={styles.desc}>{item.desc.substring(0, 60)}</p> */}
-        <div className={styles.desc} dangerouslySetInnerHTML={{ __html: item?.desc.substring(0,60) }}/>
+        <div className={styles.desc} dangerouslySetInnerHTML={{ __html: item?.desc.substring(0, Math.min(item?.desc.length, 130))
+    .split(" ") // split the string into words
+    .slice(0, -1) // remove the last element if it's incomplete
+    .join(" ") + (item?.desc.length > 130 ? "..." : "") }}/>
         <Link href={`/posts/${item.slug}`} className={styles.link}>
           Read More
         </Link>
