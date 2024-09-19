@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           {/* <ThemeContextProvider>
             <ThemeProvider> */}
-            <ThemeProvider storageKey="user-pref" defaultTheme={themes.dark.type}>
+            <ThemeProvider storageKey="user-pref" defaultTheme={themes.light.type}>
               <div className="container">
                 <div className="wrapper">
                   <Navbar />
