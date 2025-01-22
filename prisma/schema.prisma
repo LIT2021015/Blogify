@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -38,15 +35,30 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid()) @map("_id")
+  id            String         @id @default(cuid()) @map("_id")
   name          String?
-  email         String    @unique
+  email         String         @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   Post          Post[]
   Comment       Comment[]
+  votes         Vote[]
+  notifications Notification[]
+  followers Follower[] @relation("FollowersRelation")
+  following Follower[] @relation("FollowingRelation")
+}
+
+model Follower {
+  id          String @id @default(cuid()) @map("_id")
+  followerId  String
+  followingId String
+
+  follower  User @relation("FollowingRelation", fields: [followerId], references: [id])
+  following User @relation("FollowersRelation", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
 }
 
 model VerificationToken {
@@ -78,6 +90,18 @@ model Post {
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
   comments  Comment[]
+  votes     Vote[]
+}
+
+model Vote {
+  id     String @id @default(cuid()) @map("_id")
+  postId String
+  userId String
+  type   String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
 }
 
 model Comment {
@@ -88,4 +112,15 @@ model Comment {
   user      User     @relation(fields: [userEmail], references: [email])
   postSlug  String
   post      Post     @relation(fields: [postSlug], references: [slug])
+}
+
+model Notification {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  type      String 
+  message   String 
+  userId    String 
+  relatedId String? 
+  read      Boolean  @default(false) 
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

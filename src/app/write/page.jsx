@@ -35,16 +35,16 @@ const WritePage = () => {
     const value = e.target.value;
     if (value === 'Other') {
       setShowOtherInput(true);
-      setCatSlug(''); // clear selected value
+      setCatSlug(''); 
     } else {
       setShowOtherInput(false);
-      setCatSlug(value); // update selected value
+      setCatSlug(value); 
     }
   };
 
   const handleOtherInputChange = (e) => {
     setOtherValue(e.target.value);
-    setCatSlug(e.target.value); // set category to the input's value
+    setCatSlug(e.target.value); 
   };
 
   useEffect(() => {
@@ -103,7 +103,8 @@ const WritePage = () => {
   .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
+    const res = await fetch(`https://blogify-nine-phi.vercel.app
+/api/posts`, {
       method: "POST",
       body: JSON.stringify({
         title,
@@ -116,7 +117,8 @@ const WritePage = () => {
 
     if (res.status === 200) {
       const data = await res.json();
-      router.push(`/posts/${data.slug}`);
+      router.push(`https://blogify-nine-phi.vercel.app
+/posts/${data.slug}`);
     }
   };
 

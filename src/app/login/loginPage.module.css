@@ -2,54 +2,90 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  height: 100vh;
+  background:var(--bg);
+  padding: 20px;
 }
 
 .wrapper {
-  background-color: var(--softBg);
-  padding: 150px 200px;
+  background-color: var(--softBg, #ffffff);
+  padding: 40px 60px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 30px;
   border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.heading {
+  font-size: 24px;
+  /* color: #333; */
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .socialButton {
-  padding: 20px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 8px;
   border: none;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .socialButton:first-child {
-  background-color: #ff5555;
+  background-color: #db4437; /* Google Red */
 }
 
 .socialButton:nth-child(2) {
-  background-color: #111;
+  background-color: #333; /* Github Black */
 }
 
-.socialButton:nth-child(3) {
-  background-color: #087bea;
+.socialButton:hover {
+  transform: translateY(-3px); /* Button hover effect */
+  background-color: #555; /* Slightly darker for hover */
 }
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    padding: 50px 100px;
-  }
-}
-@media screen and (max-width: 640px) {
-  .wrapper {
-    padding: 30px;
+    padding: 30px 50px;
   }
 
-  .socialButton{
-    font-weight: 400;
-    font-size: 14px;
+  .heading {
+    font-size: 20px;
   }
+}
+
+@media screen and (max-width: 640px) {
+  .wrapper {
+    padding: 20px 30px;
+  }
+
+  .socialButton {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-color: #f0f4f8; */
+}
+
+.loading {
+  font-size: 18px;
+  /* color: #333; */
+  font-weight: 500;
+  text-align: center;
+  padding: 20px;
 }

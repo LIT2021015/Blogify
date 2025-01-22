@@ -2,57 +2,202 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
-}
-
-.social {
-  display: flex;
-  gap: 10px;
-  flex: 1;
+  padding: 10px 20px;
+  background-color: var(--bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
-  flex: 1;
-  text-align: center;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.links {
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navLinks {
+  display: flex;
+  gap: 30px;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 18px;
+  color: var(--link-color, #666);
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding: 5px;
+}
+
+.activeLink {
+  color: var(--link-active-color, #0073e6);
+  border-bottom: 2px solid var(--link-active-color, #0073e6);
+}
+
+.link:hover {
+  color: var(--link-hover-color, #0073e6);
+}
+
+.rightSection {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex: 1;
-  font-size: 20px;
+  gap: 15px;
 }
 
-@media screen and (max-width: 1280px) {
-  .logo {
-    font-size: 32px;
-  }
-  .links {
-    font-size: 18px;
-    gap: 15px;
-  }
+.avatar {
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
-@media screen and (max-width: 1024px) {
-  .social {
-    display: none;
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+.notificationBell {
+  position: relative;
+  cursor: pointer;
+}
+
+.bellIcon {
+  font-size: 1.5rem;
+  position: relative;
+  color: var(--bell-icon-color, #666);
+  transition: color 0.3s ease;
+}
+
+.bellIcon:hover {
+  color: var(--bell-icon-hover-color, #0073e6);
+}
+
+.notificationCount {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
+.notificationList {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: var(--bg, #ffffff); 
+  border: 1px solid var(--softTextColor, #ddd); 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); 
+  border-radius: 10px;
+  padding: 12px;
+  z-index: 1000;
+  width: 320px; 
+  max-height: 400px; 
+  overflow-y: auto; 
+  scrollbar-width: thin; 
+  scrollbar-color: var(--scrollbar-thumb, #bbb) var(--scrollbar-track, transparent); 
+}
+
+.notificationList::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.notificationList::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb, #bbb); 
+  border-radius: 4px;
+}
+
+.notificationList::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover, #999); 
+}
+
+.notificationList::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, transparent); 
+}
+
+.notificationItem {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f0f0; 
+  border-radius: 6px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.notificationItem:last-child {
+  border-bottom: none; 
+}
+
+.notificationItem:hover {
+  background-color: var(--notification-hover-bg, #034281); 
+  transform: translateY(-2px); 
+  color: var(--textColor, #333); 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.notificationItem span {
+  display: block;
+  font-size: 0.95rem; 
+  font-weight: 500;
+  color: var(--textColor, #333); 
+}
+
+.markAsReadButton {
+  background: transparent;
+  border: none;
+  color: var(--button-color, #0073e6); 
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease; 
+  margin-top: 5px;
+  text-align: right;
+  text-decoration: underline; 
+}
+
+.markAsReadButton:hover {
+  color: var(--button-hover-color, #005bb5); 
+  text-decoration: none; 
+}
+
+.notificationList.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px; 
+  color: var(--softTextColor, #aaa); 
+  font-size: 0.9rem;
+  text-align: center;
+  font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+  .notificationList {
+    width: 240px; /
   }
-  .logo {
-    text-align: left;
+
+  .notificationItem {
+    padding: 10px 12px; 
+    font-size: 14px; 
   }
 }
 @media screen and (max-width: 768px) {
+  .navLinks {
+    gap: 20px;
+    font-size: 16px;
+  }
+
   .logo {
-    font-size: 24px;
+    font-size: 20px;
   }
-}
-@media screen and (max-width: 640px) {
-  .links{
-    justify-content: flex-end;
+
+  .rightSection {
+    gap: 10px;
   }
-  .link {
-    display: none;
-  }
+
 }

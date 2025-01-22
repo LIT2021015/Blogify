@@ -22,39 +22,6 @@ const Featured = async ({ page, cat }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
-        <b>Hey, welcome to Blogify!</b> Discover Your stories and creative
-        ideas.
-      </h1>
-      {/* <div className={styles.post}>
-        <div className={styles.imgContainer}>
-          <Image
-            src={posts[0]?.img ? posts[0]?.img : "/p1.jpeg"}
-            alt=""
-            fill
-            className={styles.image}
-          />
-        </div>
-        <div className={styles.textContainer}>
-          <h1 className={styles.postTitle}>{posts[0]?.title}</h1>
-          <div
-            className={styles.postDesc}
-            dangerouslySetInnerHTML={{
-              __html:
-                posts[0]?.desc
-                  .substring(0, Math.min(posts[0]?.desc.length, 300))
-                  .split(" ") // split the string into words
-                  .slice(0, -1) // remove the last element if it's incomplete
-                  .join(" ") + (posts[0]?.desc.length > 300
-                   ? "..." : ""),
-            }}
-          />
-
-          <Link href={`/posts/${posts[0]?.slug}`} className={styles.link}>
-            Read More
-          </Link>
-        </div>
-      </div> */}
 
       <Cou posts={posts} />
     </div>

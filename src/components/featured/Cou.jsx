@@ -9,10 +9,10 @@ const Cou = ({ posts }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % posts.length); // Increment index, reset to 0 if at the end
-    }, 4000); // 2000ms = 2 seconds
+      setIndex((prevIndex) => (prevIndex + 1) % posts.length); 
+    }, 4000); 
 
-    return () => clearInterval(interval); // Clean up interval on component unmount
+    return () => clearInterval(interval); 
   }, [posts.length]);
 
   return (
@@ -33,8 +33,8 @@ const Cou = ({ posts }) => {
             __html:
               posts[index]?.desc
                 .substring(0, Math.min(posts[index]?.desc.length, 300))
-                .split(" ") // split the string into words
-                .slice(0, -1) // remove the last word if it's incomplete
+                .split(" ") 
+                .slice(0, -1) 
                 .join(" ") + (posts[index]?.desc.length > 300 ? "..." : ""),
           }}
         />

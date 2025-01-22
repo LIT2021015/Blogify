@@ -1,0 +1,154 @@
+.Container {
+  display: flex; /* Horizontal layout */
+  flex-direction: row; /* Side-by-side content */
+  justify-content: space-between; /* Ensure spacing between feed and sidebar */
+  align-items: flex-start; /* Align content at the top */
+  margin: 20px auto;
+  max-width: 1200px; /* Restrict max width */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.feedContent {
+  flex: 3; /* Occupy more space for the feed */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sideShow {
+  flex: 1; /* Occupy less space for the sidebar */
+  max-width: 300px; /* Restrict the width of the sidebar */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.sideShow h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333333;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.userImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.userName {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333333;
+}
+
+.userStats {
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+.postCard {
+  background: #ffffffc1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.postCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.postImageContainer {
+  border-radius: 10px;
+  overflow: hidden;
+  max-height: 300px;
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.postTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333333;
+}
+
+.postCategory {
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+.postDescription {
+  font-size: 1rem;
+  color: #444444;
+  line-height: 1.6;
+}
+
+.postStats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  color: #777777;
+}
+
+@media (max-width: 768px) {
+  .Container {
+    flex-direction: column; /* Stack feed and sidebar vertically on smaller screens */
+  }
+
+  .feedContent {
+    width: 100%;
+  }
+
+  .sideShow {
+    margin-top: 20px;
+    max-width: 100%; /* Allow sidebar to take full width on smaller screens */
+  }
+}

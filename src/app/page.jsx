@@ -11,9 +11,9 @@ export default function Home({ searchParams }) {
 
   return (
     <div className={styles.container}>
+          {/* <Search/> */}
       <Featured page={page} />
       <CategoryList />
-          <Search/>
       <div className={styles.content}>
         <CardList page={page} />
         <Menu />

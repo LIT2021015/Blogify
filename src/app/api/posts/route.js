@@ -8,7 +8,7 @@ export const GET = async (req) => {
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
 
-  const POST_PER_PAGE = 4;
+  const POST_PER_PAGE = 6;
 
   const query = {
     take: POST_PER_PAGE,
@@ -17,14 +17,10 @@ export const GET = async (req) => {
       ...(cat && { catSlug: cat }),
     },
     orderBy: {
-      createdAt: 'desc',
-      
-  },
-
+      createdAt: "desc",
+    },
   };
 
-  
-  
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany(query),
@@ -50,27 +46,21 @@ export const POST = async (req) => {
   }
 
   try {
-
-  
-
-
     const body = await req.json();
-
 
     let category = await prisma.category.findUnique({
       where: { slug: body.catSlug },
     });
+
   
-    // If category doesn't exist, create it
     if (!category) {
       category = await prisma.category.create({
         data: {
           slug: body.catSlug,
-          title: body.catSlug, // Assuming slug and title are the same; adjust as needed
+          title: body.catSlug, 
         },
       });
     }
-
 
     const post = await prisma.post.create({
       data: { ...body, userEmail: session.user.email },

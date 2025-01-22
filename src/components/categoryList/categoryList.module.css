@@ -21,7 +21,14 @@
   height: 80px;
   justify-content: center;
   border-radius: 10px;
-  background-color: #51203331;
+  background-color: inherit; /* Keeps the initial color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add shadow */
 }
 
 .category.style {
@@ -48,11 +55,15 @@
   background-color: #5e4fff31;
 }
 
-
-
 .image {
   border-radius: 50%;
+  transition: transform 0.3s ease; /* Smooth scaling for image */
 }
+
+.category:hover .image {
+  transform: scale(1.2); 
+}
+
 
 @media screen and (max-width: 1280px) {
   .category {

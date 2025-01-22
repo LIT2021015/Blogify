@@ -7,6 +7,12 @@
 .textContainer {
   flex: 1;
 }
+.cont{
+  display: flex;
+  align-items: center;
+  gap:10px;
+
+}
 
 .title {
   font-size: 64px;

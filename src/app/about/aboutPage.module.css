@@ -1,0 +1,81 @@
+/* General Styles */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    /* background-color: #f9f9f9; */
+    min-height: 100vh;
+  }
+  
+  .content {
+    max-width: 800px;
+    width: 100%;
+    /* background-color: #fff; */
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heading {
+    font-size: 32px;
+    /* color: #333; */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  .description {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  
+  .details {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-align: justify;
+  }
+  
+  .founderSection {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+  
+  .founderTitle {
+    font-size: 24px;
+    /* color: #444; */
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .founderDescription {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive Styling */
+  @media screen and (max-width: 768px) {
+    .content {
+      padding: 30px;
+    }
+  
+    .heading {
+      font-size: 28px;
+    }
+  
+    .description,
+    .details,
+    .founderDescription {
+      font-size: 16px;
+    }
+  }
+  

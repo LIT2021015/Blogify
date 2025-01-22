@@ -1,75 +1,138 @@
+/* General container for the footer */
 .container {
-  margin-top: 50px;
-  padding: 20px 0px;
+  padding: 80px 20px;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  color: var(--softTextColor);
+  text-align: center;
+  
 }
 
-.info {
-  flex: 1;
+.container1 {
+  padding: 80px 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* Information section (logo + description) */
+.info {
+  margin-bottom: 40px;
+  text-align: center; /* Center the description */
 }
 
 .logoText {
-  font-size: 24px;
+  font-size: 36px; /* Larger font size for the logo */
+  color: #ff5555;
+  font-weight: 700;
+  margin-bottom: 20px; /* Increased space below the logo */
 }
 
 .desc {
   font-weight: 300;
+  max-width: 700px; /* Increased the max width of the description */
+  margin: 0 auto;
+  line-height: 1.8; /* More line spacing */
+  font-size: 16px; /* Larger font size */
+  font-weight: 400;
 }
 
-.icons {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-
+/* Links section */
 .links {
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
-  gap: 100px;
+  justify-content: center;
+  gap: 60px; /* Increased gap between links */
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 1100px;
+  font-weight: 400;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Increased gap between list items */
+  text-align: left;
   font-weight: 300;
 }
 
 .listTitle {
-  font-weight: bold;
+  font-size: 18px; /* Larger font size for titles */
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
+.list a {
+  text-decoration: none;
+  font-size: 16px; /* Larger font size for links */
+  transition: color 0.3s ease;
+}
+
+.list a:hover {
+  color: #ff5555;
+}
+
+/* Footer bottom section (copyright) */
+.footerBottom {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  margin-top: 40px;
+}
+
+.footerText {
+  font-size: 16px;
+}
+
+/* Responsiveness for smaller screens */
 @media screen and (max-width: 1024px) {
   .links {
-    gap: 50px;
+    gap: 40px;
+  }
+
+  .list a {
+    font-size: 15px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .container {
+    padding: 60px 20px;
+  }
+
+  .logoText {
+    font-size: 32px;
+  }
+
+  .desc {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .links {
     flex-direction: column;
     gap: 50px;
   }
 
-  .links {
-    width: 100%;
-    justify-content: space-between;
+  .footerText {
+    font-size: 14px;
   }
 }
-@media screen and (max-width: 640px) {
-  .links {
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 50px 10px;
+  }
+
+  .desc {
     font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .footerText {
+    font-size: 12px;
   }
 }

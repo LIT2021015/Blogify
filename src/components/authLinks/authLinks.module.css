@@ -1,5 +1,15 @@
 .link {
-  cursor: pointer;
+  font-size: 18px;
+  color: var(--textColor);
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.link:hover {
+  background-color: var(--softBg);
+  color: var(--textColor);
 }
 
 .burger {
@@ -17,7 +27,7 @@
   background-color: var(--textColor);
 }
 
-.responsiveMenu{
+.responsiveMenu {
   position: absolute;
   top: 100px;
   left: 0;
@@ -28,9 +38,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px;
-  font-size: 36px;
+  gap: 30px;
+  font-size: 24px;
   z-index: 999;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.responsiveMenu a {
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.responsiveMenu a:hover {
+  background-color: var(--softBg);
+  color: var(--textColor);
 }
 
 @media screen and (max-width: 640px) {
@@ -38,7 +71,75 @@
     display: flex;
   }
 
-  .link{
+  .link {
     display: none;
   }
+}
+
+.authContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.avatarContainer {
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: var(--bg);
+  border: 1px solid var(--softTextColor);
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  overflow: hidden;
+  width: 150px; 
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdownMenu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  border: 6px solid transparent;
+  border-bottom-color: var(--bg);
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--textColor);
+  font-size: 16px;
+  gap: 10px; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdownItem:hover {
+  background-color: var(--softBg);
+  color: var(--textColor);
+}
+
+.dropdownItem img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
