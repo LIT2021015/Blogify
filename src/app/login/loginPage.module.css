@@ -41,16 +41,16 @@
 }
 
 .socialButton:first-child {
-  background-color: #db4437; /* Google Red */
+  background-color: #db4437; 
 }
 
 .socialButton:nth-child(2) {
-  background-color: #333; /* Github Black */
+  background-color: #333; 
 }
 
 .socialButton:hover {
-  transform: translateY(-3px); /* Button hover effect */
-  background-color: #555; /* Slightly darker for hover */
+  transform: translateY(-3px); 
+  background-color: #555; 
 }
 
 @media screen and (max-width: 768px) {

@@ -77,7 +77,6 @@ export const POST = async (req) => {
 
       console.log("Notification created:", notification.id);
 
-      // Trigger real-time notification via Pusher
       await pusher.trigger(
         `notifications-${postOwnerEmail}`,
         "new-notification",

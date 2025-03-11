@@ -21,14 +21,14 @@
   height: 80px;
   justify-content: center;
   border-radius: 10px;
-  background-color: inherit; /* Keeps the initial color */
+  background-color: inherit; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .category:hover {
-  transform: translateY(-5px); /* Slight lift effect */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add shadow */
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .category.style {
@@ -57,7 +57,7 @@
 
 .image {
   border-radius: 50%;
-  transition: transform 0.3s ease; /* Smooth scaling for image */
+  transition: transform 0.3s ease; 
 }
 
 .category:hover .image {

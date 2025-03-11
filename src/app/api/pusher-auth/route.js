@@ -12,7 +12,6 @@ export async function POST(req) {
   try {
     let body;
 
-    // Parse the body based on the content type
     const contentType = req.headers.get("content-type");
     if (contentType === "application/json") {
       body = await req.json();

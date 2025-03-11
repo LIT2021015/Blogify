@@ -1,7 +1,6 @@
 import prisma from "@/utils/connect";
 import Pusher from "pusher";
 
-// Initialize Pusher instance
 const pusher = new Pusher({
   appId: process.env.PUSHER_APP_ID,
   key: process.env.PUSHER_KEY,
@@ -15,7 +14,6 @@ export async function POST(req) {
     const body = await req.json();
     const { postId, userId } = body;
 
-    // Validate input data
     if (!postId || !userId) {
       return new Response(JSON.stringify({ error: "Invalid input data." }), {
         status: 400,
@@ -23,7 +21,6 @@ export async function POST(req) {
       });
     }
 
-    // Fetch the post and its owner's email
     const post = await prisma.post.findUnique({
       where: { id: postId },
       select: { userEmail: true },
@@ -38,7 +35,6 @@ export async function POST(req) {
 
     const postOwnerEmail = post.userEmail;
 
-    // Check if the user has already voted
     const existingVote = await prisma.vote.findUnique({
       where: {
         postId_userId: { postId, userId },
@@ -53,13 +49,11 @@ export async function POST(req) {
         );
       }
 
-      // Update vote to upvote
       await prisma.vote.update({
         where: { id: existingVote.id },
         data: { type: "upvote" },
       });
 
-      // Create a notification for the post owner
       if (userId !== postOwnerEmail) {
         
         
@@ -89,7 +83,6 @@ export async function POST(req) {
         }
       }
 
-      // Trigger a Pusher event for votes
       try {
         await pusher.trigger("votes-channel", "voteUpdated", {
           postId,
@@ -106,7 +99,6 @@ export async function POST(req) {
       );
     }
 
-    // Create a new upvote
     await prisma.vote.create({
       data: {
         postId,
@@ -115,7 +107,6 @@ export async function POST(req) {
       },
     });
 
-    // Create a notification for the post owner
     if (userId !== postOwnerEmail) {
       const notification = await prisma.notification.create({
         data: {

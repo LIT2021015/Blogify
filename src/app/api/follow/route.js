@@ -4,7 +4,6 @@ export async function POST(req) {
   const { followerEmail, followingEmail } = await req.json();
 
   try {
-    // Check if the user is already following
     const existingFollow = await prisma.follower.findUnique({
       where: {
         followerId_followingId: {
@@ -15,7 +14,6 @@ export async function POST(req) {
     });
 
     if (existingFollow) {
-      // If already following, unfollow
       await prisma.follower.delete({
         where: {
           followerId_followingId: {
@@ -26,7 +24,6 @@ export async function POST(req) {
       });
       return new Response(JSON.stringify({ message: "Unfollowed successfully" }), { status: 200 });
     } else {
-      // If not following, follow the user
       await prisma.follower.create({
         data: {
           followerId: followerEmail,

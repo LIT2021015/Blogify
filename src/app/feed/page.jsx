@@ -110,7 +110,6 @@ const Feed = () => {
         </div>
       </div>
 
-      {/* Top Users Side Show */}
       <div className={styles.sideShow}>
         <h2>Top Users</h2>
         {topUsers.map((user) => (

@@ -14,7 +14,6 @@ export async function POST(req) {
     const body = await req.json();
     const { message } = body;
 
-    // Trigger an event to the client
     await pusher.trigger('notifications-channel', 'new-notification', {
       message,
     });

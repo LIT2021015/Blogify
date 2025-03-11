@@ -1,7 +1,6 @@
 import prisma from "@/utils/connect";
 export async function GET(req) {
   try {
-    // Fetch users along with their posts and votes
     const users = await prisma.user.findMany({
       include: {
         Post: {
@@ -30,10 +29,10 @@ export async function GET(req) {
           totalUpvotes,
           totalViews,
           totalPosts,
-          score: totalUpvotes * 3 + totalViews * 2 + totalPosts * 1, // Adjust weights as needed
+          score: totalUpvotes * 3 + totalViews * 2 + totalPosts * 1, 
         };
       })
-      .sort((a, b) => b.score - a.score); // Sort users by score in descending order
+      .sort((a, b) => b.score - a.score); 
 
     return new Response(JSON.stringify(sortedUsers), {
       status: 200,
